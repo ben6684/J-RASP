@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- <link rel="stylesheet" type="text/css" href="/wiki/static/css/style.css"/> -->
+<link rel="stylesheet" type="text/css" href="/users/static/css/tsi.css"/>
+{% block head_css %} {% endblock %}
+
+{% block head_js %}{% endblock %}
+
+<link rel="shortcut icon" type="image/x-icon" href="/users/static/images/favicon.ico" />
+
+<title>{% block head_title %}{% endblock %}</title></head>
+
+<body>
+  <!-- Header -->  
+  <div class="block_rasp">
+
+	<div class="journal_title">
+
+	  <img width="200px" src="/users/static/images/jrasp.png">
+	  <!-- span class="journal_title">J-RASP</span>  <span class="acronyme_rasp">Journal of Reproducible Algorithms for Sound Processing</span -->
+	  </div>
+	<!-- <div class="ssubblock"><form name="search" action="/search" method="get"> -->
+	<!-- 	<input id="search_text" type="text" name="search_text"><input type="submit" value="search" > -->
+	<!--   </form> -->
+	<!-- </div> -->
+  </div>
+  <!-- / Header --> 
+
+
+  <!-- Main Body -->
+  {% block content %}
+  {% endblock %}
+  <!-- / Main Body -->
+	  
+	
+</body> 
+</html>
+
+  

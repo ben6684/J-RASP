@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head_title %} SPOL {% endblock %}
+
+{% block title %} SPOL people {% endblock %}
+
+
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif%}
+
+  <div id="content">
+	  {% for u in users%}
+	  <h4>{{u.fst_name_user}} {{u.name_user}}</h4>
+	   <table class="members">
+		 <thead> 
+		   <tr nowrap="1" valign="baseline" align="center">
+			 <th>Skill</th>
+			 <th>Rate</th>
+		   </tr>
+		 </thead>
+		 <tbody>
+		   {% for skill in u.skill_user.all %}
+		   <tr valign="baseline">
+			<td> {{skill}} </td>
+			<td> {{skill.get_skill_rate}}</td>
+		   </tr>
+		   {% endfor %}
+		 </tbody>
+	   </table>
+	  {% endfor %}
+	
+
+  </div>
+
+{% endblock %}

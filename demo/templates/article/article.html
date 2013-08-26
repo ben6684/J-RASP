@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head_title %} J-RASP article {% endblock %}
+{% block head_js %} 
+<script type="text/javascript" src="/users/static/js/view.js"></script> 
+<script type="text/javascript" src="/users/static/js/prototype.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js"></script>
+{% endblock %}
+{% block content %}
+
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif%}
+
+<div class="block_rasp">
+
+  <h1>{{article.title}}</h1>
+  {{article.author}}
+
+  <div class="bsubblock">
+	<h3> Abstract </h3>
+	{{article.abstract}}
+	<br>
+	{% for kw in article.KW.all %}<a href="#"> <!-- will be KW search in the futur -->{{kw}}, </a>{% endfor %}
+	<br>
+	This article was read {{article.views}} times 
+  </div>
+
+  <div class="bsubblock">
+	<h3> Downloadable content </h3>
+	<a href="{% url 'download' article.pdf.id_file %}">[PDF]</a>   <a href="{% url 'download' article.code.id_file%}"> [SOURCE CODE] </a><br> 
+	code downloaded {{article.code.number_download}} times
+  </div>
+
+
+  <div class="bsubblock">
+	<h3>Examples</h3>
+	{{article.example|safe}}
+  </div>
+
+  <div class="bsubblock">
+	<h3> Feedback </h3>
+	{% for fb in article.feedback_set.all%}
+	<div class="feedback">
+	  <!-- do a TABLE GOBSHIT ! -->
+	  <div class="author_feedback">
+		Author : <i> {{fb.author}}</i><br>
+		Date : {{fb.date_publication}}
+	  </div>
+	  <div class="core_feedback">
+		<h4>{{fb.title_feedback}}</h4>
+		<p>
+		  {{fb.slug}}
+		</p>
+		<div id="good_comment_{{fb.id_feedback}}">
+		  {{fb.good_comment}} <input type="button" href="#" onclick="add_good_comment({{fb.id_feedback}})" value="Thumb up" />
+		</div>
+		<!-- Here put a javascript function that count the good comment -->
+	  </div>
+	</div>
+	{% endfor %}
+
+	  <form action="{% url 'article' article.id_article%}" enctype="multipart/form-data" method="post"> {% csrf_token %}
+		<table align="center">
+		  {{form.as_table}}
+		</table>
+		<p align="center"> <input type="submit" value="Validate"/> </p>
+	  </form>
+
+  </div>
+
+
+  {% endblock %}

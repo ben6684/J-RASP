@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head_title %} J-RASP guideline {% endblock %}
+
+{% block content %}
+
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif%}
+<div class="block_rasp">
+{% for a in articles %}
+
+<a href="{% url 'article' a.id_article %}"> {{a.title}} </a>
+{% endfor %}
+
+
+</div>
+
+
+{% endblock %}

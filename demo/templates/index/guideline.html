@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head_title %} J-RASP guideline {% endblock %}
+
+{% block content %}
+
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif%}
+<div class="block_rasp">
+  <h3>Article Guideline</h3>
+  <ol>
+	<li> The article must describe all steps of the algorithm. Some steps can be described as pseudo code</li>
+	<li> The article must contain:
+	  <ul>
+		<li> an abstract </li>
+		<li> an introduction </li>
+		<li> a scientific description of the method </li>
+		<li> a discussion about the performances of the algorithm on several examples </li>
+		<li> an investigation on the influence of the parameters </li>
+		<li> some bibliographical references </li>
+	  </ul>
+	</li>
+  </ol>
+</div>
+
+<div class="block_rasp">
+  <h3>Software guideline</h3>
+  <ol>
+	<li> The submitted code must be a straighforward implementation of the algorithm described in the article</li>
+	<li> The code should be commented and readable</li> 
+	<li> The languages accepted are : Matlab, C/C++, Python 2.x, Python 3.x. Please only use standard toolboxes and librairies. We warn you that the acceptation of toolboxes, librairies and versions is let to the appreciation of the editor</li>
+	<li>The archive file (zip, tar) should include:
+	  <ul>
+		<li>a README file describing compilation, installation, execution, versions, toolboxes, librairies and dependencies</li>
+		<li>the source code (if C/C++, please provide a make or cmake)</li>
+		<li>a demo folder containing demo data and demo source code (at least 2 examples)</li>
+	  </ul>
+	</li>
+  </ol>
+
+</div>
+
+<div class="block_rasp">
+Link to OJS or submission form
+</div>
+
+{% endblock %}

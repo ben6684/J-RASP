@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head_title %} J-RASP {% endblock %}
+
+{% block content %}
+
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif%}
+<div class="block_rasp">
+  <h3> J-RASP Purpose </h3>
+  <p>
+J-RASP is a journal publishing reproductible algorithms for sound processing. Every publication contains a detailed description and implementation of the algorithm and a demo program. Every submission is peer-reviewed (including source code and demo program) and we certify that the implementation fits the description. The algorithms submitted to J-RASP can be original in the methodology or in the implementation. They may also consist in reviews of existing methods.
+  </p>
+</div>
+
+<a href="{%url 'author_guideline' %}"> 
+  <div class="block_rasp">
+	<big>How to submit</big>
+  </div>
+</a>
+
+<div class="block_rasp">
+  <div class="msubblock">
+	<h3> Latest articles </h3>
+	<ul>
+	  {% for article in articles%}
+	  <li><a href="{% url 'article' article.id_article %}">{{article.title}}</a></li>
+	  {% endfor %}
+	</ul>
+	<a href="{% url 'articles' %}"> all the lastes articles </a>
+  </div>
+  <div class="msubblock">
+	<h3> viewest articles </h3>
+	<ul>
+	  {% for article in articles%}
+	  <li><a href="{% url 'article' article.id_article %}">{{article.title}}</a></li>
+	  {% endfor %}
+	</ul>
+	<a href="{% url 'articles' %}"> all the viewest articles </a>
+  </div>
+</div>
+
+{% endblock %}

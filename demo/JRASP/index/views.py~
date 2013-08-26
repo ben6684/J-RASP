@@ -1,0 +1,15 @@
+# Create your views here.
+from django.shortcuts import render_to_response, get_object_or_404, redirect, HttpResponseRedirect, HttpResponse
+from django import forms
+from django.template import RequestContext
+
+from JRASP.models import *
+
+def index(request):
+	"""
+	Just show the index page with the informations
+	"""
+	articles = Article.objects.all()
+	return render_to_response('index/index.html', {'articles' : articles} ,context_instance=RequestContext(request))
+
+
